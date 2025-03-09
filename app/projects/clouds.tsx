@@ -5,6 +5,7 @@ import Image from "next/image";
 
 export default function Clouds() {
   return (
+    // Une petite animation avec les nuages
     <motion.div
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}

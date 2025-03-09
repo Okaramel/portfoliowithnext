@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+//Formulaire avec Formspree
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');

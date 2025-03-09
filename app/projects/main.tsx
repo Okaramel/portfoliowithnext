@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
+
+//Projets stockés dans un tableau
 const projects = [
     { id: 1,
     title: 'Le musée Grévin',

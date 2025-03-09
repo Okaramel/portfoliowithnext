@@ -4,6 +4,7 @@ import Image from 'next/image';
 
 export default function AboutMe() {
     return (
+        // Petits nuages sur la page web
         <div className="flex flex-col items-center justify-center gap-6 m-4 md:gap-12 md:m-12 relative">
             <Image
                 src="/cloud_1.png"
