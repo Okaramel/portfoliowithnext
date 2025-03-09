@@ -1,67 +1,97 @@
-"use client";
-import { useState } from "react";
+import { useState } from 'react';
 
-export default function ContactMe() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState("");
-
-  const handleChange = (e: { target: { name: any; value: any; }; }) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+const ContactForm = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState('');
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    setStatus("Envoi en cours...");
 
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
+    // Envoie les données à Formspree
+    const response = await fetch('https://formspree.io/f/maykjkjk', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        message: message,
+      }),
     });
 
     if (response.ok) {
-      setStatus("Message envoyé !");
-      setFormData({ name: "", email: "", message: "" });
+      setStatus('Merci pour votre message!');
     } else {
-      setStatus("Erreur lors de l'envoi. Réessayez.");
+      setStatus('Désolé, une erreur s\'est produite.');
     }
+
+    // Réinitialise le formulaire
+    setName('');
+    setEmail('');
+    setMessage('');
   };
 
   return (
-    <div className="max-w-md mx-auto bg-gray-800 p-6 rounded-lg shadow-lg text-white">
-      <h2 className="text-2xl font-bold mb-4 text-center">Contactez-moi</h2>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
-          type="text"
-          name="name"
-          placeholder="Votre nom"
-          value={formData.name}
-          onChange={handleChange}
-          className="p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-white"
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Votre email"
-          value={formData.email}
-          onChange={handleChange}
-          className="p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-white"
-          required
-        />
-        <textarea
-          name="message"
-          placeholder="Votre message"
-          value={formData.message}
-          onChange={handleChange}
-          className="p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-white"
-          required
-        ></textarea>
-        <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white py-2 rounded transition-all">
+    <div className="min-h-screen flex flex-col justify-center items-center">
+      <div className="text-center mb-8">
+        <div className="flex justify-center flex-col">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl text-white font-semibold">Contact Me!</h1>
+          <p className="text-[#F2E3DE] p-10 m-0 w-full max-w-md bg-[#373b47]/[50%] rounded-2xl mx-auto mt-4">
+            If you like my portfolio and my profile, I invite you to send me a message so we can exchange!
+          </p>
+        </div>
+      </div>
+
+      <form onSubmit={handleSubmit} className="max-w-lg w-full p-6 bg-[#565b6d] rounded-lg shadow-lg">
+        <div className="mb-4">
+          <label htmlFor="name" className="block text-sm font-semibold text-white mb-2">Nom:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            className="w-full px-4 py-2 text-sm text-black border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="email" className="block text-sm font-semibold text-white mb-2">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="w-full px-4 py-2 text-sm text-black border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="message" className="block text-sm font-semibold text-white mb-2">Message:</label>
+          <textarea
+            id="message"
+            name="message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            required
+            className="w-full px-4 py-2 text-sm text-black border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <button 
+          type="submit" 
+          className="w-full py-2 px-4 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
           Envoyer
         </button>
+        {status && <p className="mt-4 text-sm text-green-600 text-center">{status}</p>}
       </form>
-      {status && <p className="mt-4 text-center">{status}</p>}
     </div>
   );
-}
+};
+
+export default ContactForm;
+
