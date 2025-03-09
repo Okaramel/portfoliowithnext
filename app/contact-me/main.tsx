@@ -10,7 +10,7 @@ const ContactForm = () => {
     e.preventDefault();
 
     // Envoie les données à Formspree
-    const response = await fetch('https://formspree.io/f/maykjkjk', {
+    const response = await fetch('https://formspree.io/f/xgvawgen', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ const ContactForm = () => {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             required
-            className="w-full px-4 py-2 text-sm text-black border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 text-sm text-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
         <button 
