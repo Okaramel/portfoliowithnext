@@ -24,9 +24,9 @@ const ContactForm = () => {
     });
 
     if (response.ok) {
-      setStatus('Merci pour votre message!');
+      setStatus('Message send successfully! I will get back to you as soon as possible.');
     } else {
-      setStatus('Désolé, une erreur s\'est produite.');
+      setStatus('I\'m sorry, but there was an error sending the message. Please try again later.');
     }
 
     // Réinitialise le formulaire
@@ -48,7 +48,7 @@ const ContactForm = () => {
 
       <form onSubmit={handleSubmit} className="max-w-lg w-full p-6 bg-[#565b6d] rounded-lg shadow-lg">
         <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-semibold text-white mb-2">Nom:</label>
+          <label htmlFor="name" className="block text-sm font-semibold text-white mb-2">Name :</label>
           <input
             type="text"
             id="name"
@@ -60,7 +60,7 @@ const ContactForm = () => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="email" className="block text-sm font-semibold text-white mb-2">Email:</label>
+          <label htmlFor="email" className="block text-sm font-semibold text-white mb-2">Email :</label>
           <input
             type="email"
             id="email"
@@ -72,7 +72,7 @@ const ContactForm = () => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="message" className="block text-sm font-semibold text-white mb-2">Message:</label>
+          <label htmlFor="message" className="block text-sm font-semibold text-white mb-2">Message :</label>
           <textarea
             id="message"
             name="message"
@@ -84,9 +84,9 @@ const ContactForm = () => {
         </div>
         <button 
           type="submit" 
-          className="w-full py-2 px-4 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full py-2 px-4 text-white bg-[#424553] rounded-md hover:bg-[#353743] focus:outline-none focus:ring-2 focus:bg-[#868ca7]"
         >
-          Envoyer
+          Send !
         </button>
         {status && <p className="mt-4 text-sm text-green-600 text-center">{status}</p>}
       </form>

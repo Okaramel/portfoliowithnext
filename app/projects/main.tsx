@@ -8,14 +8,14 @@ import Image from 'next/image';
 const projects = [
     { id: 1,
     title: 'Le musée Grévin',
-    description: 'Ce projet avait pour but de refaire un site web sur deux pages et le rendre accessible pour deux types d\'handicapes. Ici avec mon collègue, nous avons fait les handicaps moteur et visuelle. Ici, j\'ai fait la page de contact.',
+    description: 'This project aimed to redo a website on two pages and make it accessible for two types of disabilities. Here with my colleague, we did the motor and visual disabilities. Here, I did the contact page.',
     image: '/project_grevin.png',  
     url: 'https://ian-nine.vercel.app/index.html'
     },
 
     {id: 2,
     title: 'The Mood Studio', 
-    description: 'Un de mes plus projets dont je suis le plus fière car ici nous avons développé autant notre créativité que notre technique. Nous devions créer un site web qui renvoyait à 3 types d\'émotions. Dans ce projet, j\'ai activement participé à la création des maquettes mais également de la page d\'accueil et de l\'émotion de la peur.', 
+    description: 'One of my most proud projects because here we developed both our creativity and our technique. We had to create a website that referred to 3 types of emotions. In this project, I actively participated in the creation of the models but also the home page and the emotion of fear.', 
     image: '/project_mood_studio.png', 
     url: 'https://the-mood-studio.vercel.app/'
     },
